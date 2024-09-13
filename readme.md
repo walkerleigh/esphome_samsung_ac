@@ -26,7 +26,7 @@ In general, all devices with dedicated communication wires (not only power) shou
 
 [@hnykda](https://github.com/hnykda) found a way to decode Samsung's product numbers. For more info, see [this issue](https://github.com/lanwin/esphome_samsung_ac/issues/101#issuecomment-2098206070).
 
-There are also two Discussion threads about confirmed [NASA]([url](https://github.com/lanwin/esphome_samsung_ac/discussions/82)) and [NonNASA]([url](https://github.com/lanwin/esphome_samsung_ac/discussions/78)) uses. If you made this working on a model that has not been confirmed yet, please do so in there!
+There are also two discussion threads about confirmed [NASA]([url](https://github.com/lanwin/esphome_samsung_ac/discussions/82)) and [NonNASA]([url](https://github.com/lanwin/esphome_samsung_ac/discussions/78)) uses. If you have got this project working on a model that has not been confirmed yet, please add a comment in the relevant thread!
 
 ### Known to work (not exhaustive)
 
@@ -44,13 +44,13 @@ There are also two Discussion threads about confirmed [NASA]([url](https://githu
 
 ## Hardware installation
 
-An ESPHome compatible device and an RS-485 to (TTL) serial adapter is required to run this project. While its possible to run it on an ESP8266 its better to chose an ESP32 since it handles the incoming message stream better (cause it has more CPU power and RAM).
+An ESPHome compatible device and an RS-485 to (TTL) serial adapter is required to run this project. While it's possible to run it on an ESP8266 it's better to choose an ESP32 since it handles the incoming message stream better (because it has more CPU power and RAM).
 
 ### We recommand to use the M5STACK ATOM Lite + M5STACK RS-485 kit
 
-Its cheap, comes with a tiny case (which can fit inside an indoor unit) and allow directly to use the 12V comming from the V1/V2 lines which some AC units provide.
+It's cheap, comes with a tiny case (which can fit inside an indoor unit) and allow directly to use the 12V coming from the V1/V2 lines which some AC units provide.
 
-> If your AC did not has V1/V2 please check out this [post](https://github.com/lanwin/esphome_samsung_ac/discussions/39#discussioncomment-8383733).
+> If your AC does not has V1/V2 please check out this [post](https://github.com/lanwin/esphome_samsung_ac/discussions/39#discussioncomment-8383733).
 
 1. Purchase the following components and stack them:
 
@@ -101,8 +101,8 @@ Follow these steps to install and configure the software for your AC unit contro
 
 ## Troubleshooting
 
-- Check your wiring (I had a lot of problems cause the wire connection was loose)
-- Check that you really connected to the same pins/cables as our outdoor device (usually F1/F2), not to the pins/cables of a remote control unit.
+- Check your wiring (I had a lot of problems because the wire connection was loose)
+- Check that you are connected to the same pins/cables as your outdoor device (usually F1/F2), not to the pins/cables of a remote control unit.
 - Test if swapping F1/F2 helps
 - Change **baud_rate** from 9600 to 2400 (some older hardware uses a lower baud rate)
 - For some boards (like NodeMCU) you need to disable serial logging, since it blocks the pins required for the RS485 serial communication. Just add `baud_rate: 0` to the logger section.
@@ -121,9 +121,9 @@ Follow these steps to install and configure the software for your AC unit contro
 ## FAQ
 
 - **Do I need to power cycle my Samsung devices to make it work?** No, but they should be turned on.
-- **Does this works also with Samsung heat pumps?** Yes, while it was not desinged in the first place for them, we have reports that it also works.
+- **Does this works also with Samsung heat pumps?** Yes, while it was not designed in the first place for them, we have reports that it also works.
 - **Do I need a ESP for each indoor device?** When all your indoor devices are connected to the same outdoor device, then you need just one. Otherwise you need one for each outdoor device.
-- **Do I need to turn off my climate devices when I connect the ESP?** No, but it's advised to do so, cause there is no garantee that it will not harm you Samsung hardware. And as you might be messing around 240V to be able to hook to those F1/F2 cables, it's safer to disconnect the power when attaching the cables and then bring the power up again. 
+- **Do I need to turn off my climate devices when I connect the ESP?** No, but it's advisable to do so, because there is no guarantee that it will not harm your Samsung hardware. Also as you might be messing around 240V to be able to hook to those F1/F2 cables, it's safer to disconnect the power when attaching the cables and then bring the power back up afterwards. 
 
 ## Development
 
@@ -147,7 +147,7 @@ samsung_ac:
 ## NASA vs Non NASA
 
 It took me a while to figure out what the difference is. NASA is the new wire protocol which Samsung uses for their AC systems.
-The old units are using the so-called Non NASA protocol. The protocols share some aspects like the start and end byte. But the
+The older units use the so-called Non NASA protocol. The protocols share some aspects like the start and end bytes. But the
 newer NASA protocol is more complex and allows more data to be transferred and more units to communicate.
 
 ### NASA
@@ -160,15 +160,15 @@ to know the number and wait for it.
 
 ### Non NASA
 
-The Non NASA protocol is specifically desined to transport AC data.
+The Non NASA protocol is specifically designed to transport AC data.
 
-[DannyDeGaspari](https://github.com/DannyDeGaspari) started toe document the Non NASA protocol (but from wall controller side) [here](https://github.com/DannyDeGaspari/Samsung-HVAC-buscontrol).
+[DannyDeGaspari](https://github.com/DannyDeGaspari) started to document the Non NASA protocol (but from wall controller side) [here](https://github.com/DannyDeGaspari/Samsung-HVAC-buscontrol).
 
 ## Credits
 
 Thanks goes to DannyDeGaspari https://github.com/DannyDeGaspari/Samsung-HVAC-buscontrol. He made the initial attempt to describe the
 older Non NASA protocol.
 
-Thanks goes to matthias882 https://github.com/matthias882/some_esphome_components. He made an an basic ESPHome component
-for the older Non NASA protocol which was a perfect source for start playing and learning to communicate with the AC
+Thanks goes to matthias882 https://github.com/matthias882/some_esphome_components. He made a basic ESPHome component
+for the older Non NASA protocol which was a perfect resource to start playing and learning to communicate with the AC
 and use ESPHome.
